@@ -1,6 +1,7 @@
 // server.js
 import "dotenv/config";
 import express from "express";
+import { Readable } from "node:stream";
 
 const app = express();
 const GH_TOKEN = process.env.GH_TOKEN;
@@ -149,8 +150,9 @@ app.get("/api/v1/releases/download/:repo/latest", async (req, res) => {
     const contentLength = assetRes.headers.get("content-length");
     if (contentLength) res.setHeader("Content-Length", contentLength);
 
-    assetRes.body.pipe(res);
-    assetRes.body.on("end", () =>
+    const nodeStream = Readable.fromWeb(assetRes.body);
+    nodeStream.pipe(res);
+    nodeStream.on("end", () =>
       console.log(
         `[download-latest] Finished streaming ${asset.name} for ${repo}`,
       ),
@@ -184,8 +186,9 @@ app.get("/api/v1/releases/download/:repo/:assetId", async (req, res) => {
     const contentLength = response.headers.get("content-length");
     if (contentLength) res.setHeader("Content-Length", contentLength);
 
-    response.body.pipe(res);
-    response.body.on("end", () =>
+    const nodeStream = Readable.fromWeb(response.body);
+    nodeStream.pipe(res);
+    nodeStream.on("end", () =>
       console.log(`[download] Finished streaming asset ${assetId} for ${repo}`),
     );
   } catch (err) {
