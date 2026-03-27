@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "dotenv": "^17.3.1",
-    "express": "^4.21.2",
-    "node-fetch": "^3.3.2"
+    "express": "^4.21.2"
   },
   "keywords": [],
   "author": "vldmrn",
@@ -19,5 +18,8 @@
   "description": "",
   "devDependencies": {
     "nodemon": "^3.1.14"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

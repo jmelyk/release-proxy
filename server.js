@@ -1,7 +1,6 @@
 // server.js
 import "dotenv/config";
 import express from "express";
-import fetch from "node-fetch";
 
 const app = express();
 const GH_TOKEN = process.env.GH_TOKEN;
