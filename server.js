@@ -165,4 +165,5 @@ app.get("/api/v1/releases/download/:repo/:assetId", async (req, res) => {
   );
 });
 
-app.listen(3000, "0.0.0.0", () => console.log(`[server] Listening on port 3000`));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, "0.0.0.0", () => console.log(`[server] Listening on port ${PORT}`));

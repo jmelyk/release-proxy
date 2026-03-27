@@ -17,6 +17,7 @@ npm start              # production
 | ------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | `GH_TOKEN`   | Yes      | GitHub Personal Access Token used to authenticate requests to the GitHub API. Needs `repo` scope (or `public_repo` for public repos only). |
 | `REPO_OWNER` | Yes      | GitHub user or organization name that owns the repositories (e.g. `MY-COMPANY`).                                                           |
+| `PORT`       | No       | Port the server listens on. Defaults to `3000`. Set automatically by Railway and other platforms.                                          |
 
 Create a `.env` file in the project root:
 
